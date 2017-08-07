@@ -1,0 +1,7 @@
+LJNetworkSwift.xcodeproj/xcuserdata/
+LJNetworkSwift.xcworkspace/
+Pods/
+*.swp
+Podfile.lock
+.DS_Store
+LJNetworkSwift.xcodeproj/project.xcworkspace/xcuserdata/
