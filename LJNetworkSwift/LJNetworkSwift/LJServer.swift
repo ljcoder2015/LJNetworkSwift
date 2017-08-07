@@ -13,11 +13,11 @@ class LJServer {
     static let sharedInstance = LJServer()
     
     open var developServerDomain: String {
-        return ""
+        return "http://canyin.isunn.cn:8177"
     }
     
     open var developImageServerDomain: String {
-        return ""
+        return "http://canyin.isunn.cn:8177"
     }
     
     open var distributionServerDomain: String  {
@@ -33,7 +33,7 @@ class LJServer {
     }
     
     open func imageDomain() -> String {
-        return developServerDomain
+        return developImageServerDomain
     }
     
 }

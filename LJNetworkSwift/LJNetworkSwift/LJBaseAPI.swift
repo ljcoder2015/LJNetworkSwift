@@ -118,7 +118,7 @@ extension LJResponse {
 /******************************* LJRequest Protocol ************************************/
 public protocol LJRequest {
     
-    // 请求方式， 默认为 .post
+    // 请求方式， 默认为 .get
     func method(_ api: LJBaseAPI) -> LJHTTPMethod
     // API路由
     func route(_ api: LJBaseAPI) -> String
@@ -143,7 +143,7 @@ public extension LJRequest {
     }
     
     func method(_ api: LJBaseAPI) -> LJHTTPMethod {
-        return .post
+        return .get
     }
     
     func requestParameters(_ api: LJBaseAPI) -> Dictionary<String, Any>? {
@@ -188,6 +188,12 @@ public class LJBaseAPI {
     public var requestDelegate: LJRequest?
     
     public var callBackDelegate: LJRequestCallBack?
+    
+    public init(delegate: LJRequestCallBack) {
+        requestDelegate = delegate
+        callBackDelegate = delegate
+        
+    }
     
     deinit {
         LJNetworkProxy.sharedInstance.cancelRequest(requestList)
