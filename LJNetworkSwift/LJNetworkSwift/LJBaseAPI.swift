@@ -36,7 +36,7 @@ public enum LJRequestError: Error {
 
 extension LJRequestError {
     
-    var msg: String {
+    public var msg: String {
         switch self {
         case .failed(let msg, _):
             return msg
@@ -45,7 +45,7 @@ extension LJRequestError {
         }
     }
     
-    var code: String {
+    public var code: String {
         switch self {
         case .failed(_ , let code):
             return code
@@ -71,7 +71,7 @@ public enum LJResponse {
 extension LJResponse {
     
     // 消息
-    var message: String {
+    public var message: String {
         switch self {
         case .success( _, let msg, _):
             return msg
@@ -82,7 +82,7 @@ extension LJResponse {
     }
     
     // JSON数据
-    var data: Any {
+    public var data: Any {
         switch self {
         case .success(let data, _, _):
             return data
@@ -92,7 +92,7 @@ extension LJResponse {
     }
     
     // code码
-    var code: String {
+    public var code: String {
         switch self {
         case .success( _, _, let statusCode):
             return statusCode
@@ -102,7 +102,7 @@ extension LJResponse {
         }
     }
     // 状态，成功和失败
-    var status: Bool {
+    public var status: Bool {
         switch self {
         case .success:
             return true
@@ -132,7 +132,7 @@ public protocol LJRequest {
     func requestHeader(_ api: LJBaseAPI) -> HTTPHeaders
 }
 
-extension LJRequest {
+public extension LJRequest {
     
     func shouldRequest(_ api: LJBaseAPI) -> Bool {
         return true
@@ -165,7 +165,7 @@ public protocol LJRequestCallBack: LJRequest {
     func callCodeHandler(_ api: LJBaseAPI, code: String)
 }
 
-extension LJRequestCallBack {
+public extension LJRequestCallBack {
     
     func callFailed(_ api: LJBaseAPI, error: LJRequestError) {
         
